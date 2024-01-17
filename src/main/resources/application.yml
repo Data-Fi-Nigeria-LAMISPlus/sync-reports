@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 12345
+    url: jdbc:postgresql://localhost:5432/central_db
+    hibernate:
+      ddl-auto: none
+      event.merge.entry_copy_observer: allow
+    hikari:
+      auto-commit: true
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+      maximum-pool-size: 20
+      minimum-idle: 5
+  jpa:
+    database: POSTGRESQL
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate.enable_lazy_load_no_trans: true
+      hibernate.jdbc.lob.non_contextual_creation: true
