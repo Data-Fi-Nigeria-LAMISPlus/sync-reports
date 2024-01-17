@@ -11,7 +11,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 12345
-    url: jdbc:postgresql://localhost:5432/central_db
+    url: jdbc:postgresql://localhost:5432/sync_warehouse
     hibernate:
       ddl-auto: none
       event.merge.entry_copy_observer: allow

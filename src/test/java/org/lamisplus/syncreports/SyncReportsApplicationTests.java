@@ -1,10 +1,10 @@
-package org.lamisplus.syncdashboard;
+package org.lamisplus.syncreports;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SyncDashboardApplicationTests {
+class SyncReportsApplicationTests {
 
     @Test
     void contextLoads() {

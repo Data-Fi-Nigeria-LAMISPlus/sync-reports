@@ -1,9 +1,9 @@
-package org.lamisplus.syncdashboard.service;
+package org.lamisplus.syncreports.service;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.lamisplus.syncdashboard.domain.entity.Radet;
+import org.lamisplus.syncreports.domain.entity.Radet;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -29,10 +29,10 @@ public class GenerateExcelDataHelper {
                 Map<Integer, Object> map = new HashMap<>();
                 String personUuid = radetReportDto.getUniquePersonUuid();
                 Double repeatVl = null;
-                //Double currentVl = null;
                 String tbStatusOutCome = null;
                 int index = 0;
 
+                //sn
                 map.put(index++, sn);
 
                 //bio hospital number & state, lga & facility
@@ -45,6 +45,7 @@ public class GenerateExcelDataHelper {
                 map.put(index++, radetReportDto.getDatimId() + "_" + radetReportDto.getUniquePersonUuid());
                 map.put(index++, radetReportDto.getHospitalNumber());
                 map.put(index++, radetReportDto.getUniqueId());
+
                 //ovc
                 map.put(index++, radetReportDto.getHouseholdNumber());
                 map.put(index++, radetReportDto.getOvcNumber());
@@ -52,8 +53,8 @@ public class GenerateExcelDataHelper {
                 //bio data
                 map.put(index++, radetReportDto.getGender());
                 map.put(index++, radetReportDto.getTargetGroup());
-                //map.put(index++, radetReportDto.getCurrentWeight());
-                //map.put(index++, radetReportDto.getPregnancyStatus());
+                map.put(index++, null); //TODO
+                map.put(index++, null); //TODO
                 map.put(index++, radetReportDto.getDateOfBirth());
 
                 map.put(index++, radetReportDto.getAge());
@@ -66,14 +67,15 @@ public class GenerateExcelDataHelper {
 
                 map.put(index++, radetReportDto.getRegimenLineAtStart());
                 map.put(index++, radetReportDto.getRegimenAtStart());
-                //map.put(index++, radetReportDto.getDateOfCurrentRegimen());
+                map.put(index++, null); //TODO
                 map.put(index++, radetReportDto.getCurrentRegimenLine());
                 map.put(index++, radetReportDto.getCurrentArtRegimen());
 
                 //cd4
-                //map.put(index++, radetReportDto.getCurrentClinicalStage());
+                map.put(index++, null);
                 map.put(index++, radetReportDto.getDateOfLastCd4Count());
                 map.put(index++, radetReportDto.getLastCd4Count());
+
                 //vl
                 map.put(index++, radetReportDto.getDateOfViralLoadSampleCollection());
                 map.put(index++, radetReportDto.getDateOfCurrentViralLoadSample());
@@ -85,29 +87,29 @@ public class GenerateExcelDataHelper {
 
                 //current status
                 map.put(index++, radetReportDto.getCurrentStatus());
-                //map.put(index++, radetReportDto.getCurrentStatusDate());
+                map.put(index++, null);
                 map.put(index++, radetReportDto.getCauseOfDeath());
                 map.put(index++, radetReportDto.getVaCauseOfDeath());
 
                 //previous status
-
                 map.put(index++, radetReportDto.getPreviousStatus());
                 map.put(index++, radetReportDto.getPreviousStatusDate());
 
-
                 map.put(index++, radetReportDto.getEnrollmentSetting());
+
                 //TB
                 map.put(index++, radetReportDto.getDateOfTbScreened());
                 map.put(index++, radetReportDto.getTbStatus());
                 map.put(index++, tbStatusOutCome);
+
                 //tb lab
                 map.put(index++, radetReportDto.getDateOfTbSampleCollection());
                 map.put(index++, radetReportDto.getTbDiagnosticTestType());
-                //map.put(index++, radetReportDto.getDateOfTbDiagnosticResultReceived());
+                map.put(index++, null);
                 map.put(index++, radetReportDto.getTbDiagnosticResult());
 
                 map.put(index++, radetReportDto.getTbTreatmentStartDate());
-                //map.put(index++, radetReportDto.getTbTreatementType());
+                map.put(index++, radetReportDto.getTbTreatmentType());
                 map.put(index++, radetReportDto.getTbCompletionDate());
                 map.put(index++, radetReportDto.getTbTreatmentOutcome());
                 map.put(index++, radetReportDto.getDateOfLastTbLam());
@@ -122,10 +124,10 @@ public class GenerateExcelDataHelper {
 
                 //EAC
                 map.put(index++, radetReportDto.getDateOfCommencementOfEac());
-                //map.put(index++, radetReportDto.getNumberOfEacSessionCompleted());
+                map.put(index++, radetReportDto.getNumberOfEacSessionsCompleted());
                 map.put(index++, radetReportDto.getDateOfLastEacSessionCompleted());
-                //map.put(index++, radetReportDto.getDateOfExtendEacCompletion());
-                //map.put(index++, radetReportDto.getDateOfRepeatViralLoadEACSampleCollection());
+                map.put(index++, radetReportDto.getDateOfExtendedEacCompletion());
+                map.put(index++, null);
                 map.put(index++, repeatVl);
                 map.put(index++, radetReportDto.getDateOfRepeatViralLoadResult());
 

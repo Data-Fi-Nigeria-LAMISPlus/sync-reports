@@ -1,4 +1,4 @@
-package org.lamisplus.syncdashboard.domain.entity;
+package org.lamisplus.syncreports.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -26,7 +26,7 @@ public class Radet {
     private String uniqueId;
 
     @Column(name = "age")
-    private double age;
+    private Double age;
 
     @Column(name = "gender")
     private String gender;
@@ -86,7 +86,7 @@ public class Radet {
     private LocalDate dateOfCurrentViralLoadSample;
 
     @Column(name = "vlfacility")
-    private long vlFacility;
+    private Long vlFacility;
 
     @Column(name = "vlarchived")
     private String vlArchived;
@@ -116,19 +116,19 @@ public class Radet {
     private LocalDate nextPickupDate;
 
     @Column(name = "monthsofarvrefill")
-    private double monthsOfArvRefill;
+    private Double monthsOfArvRefill;
 
     @Column(name = "datebiometricsenrolled")
     private LocalDate dateBiometricsEnrolled;
 
     @Column(name = "numberoffingerscaptured")
-    private long numberOfFingersCaptured;
+    private Long numberOfFingersCaptured;
 
     @Column(name = "dateofcommencementofeac")
     private LocalDate dateOfCommencementOfEac;
 
     @Column(name = "numberofeacsessioncompleted")
-    private long numberOfEacSessionsCompleted;
+    private Long numberOfEacSessionsCompleted;
 
     @Column(name = "dateoflasteacsessioncompleted")
     private LocalDate dateOfLastEacSessionCompleted;
@@ -243,9 +243,6 @@ public class Radet {
 
     @Column(name = "vleligibilitystatus")
     private LocalDate vlEligibilityStatus;
-
-    @Column(name = "test")
-    private int test;
 
     @Column(name = "dateofvleligibilitystatus")
     private LocalDate dateOfVlEligibilityStatus;

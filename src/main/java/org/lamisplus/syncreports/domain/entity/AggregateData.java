@@ -1,4 +1,4 @@
-package org.lamisplus.syncdashboard.domain.entity;
+package org.lamisplus.syncreports.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,6 +1,6 @@
-package org.lamisplus.syncdashboard.service;
+package org.lamisplus.syncreports.service;
 
-import org.lamisplus.syncdashboard.domain.entity.FlatFileRequest;
+import org.lamisplus.syncreports.domain.entity.FlatFileRequest;
 
 import java.io.ByteArrayOutputStream;
 

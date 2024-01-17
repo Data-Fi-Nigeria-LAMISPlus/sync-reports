@@ -1,4 +1,4 @@
-package org.lamisplus.syncdashboard.service;
+package org.lamisplus.syncreports.service;
 
 import java.util.Arrays;
 import java.util.List;

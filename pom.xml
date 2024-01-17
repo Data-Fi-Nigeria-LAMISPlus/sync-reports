@@ -11,8 +11,8 @@
     <groupId>org.lamisplus</groupId>
     <artifactId>sync-reports</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sync-dashboard</name>
-    <description>sync-dashboard</description>
+    <name>sync-reports</name>
+    <description>sync-reports</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>4.1.2</version>
+            <version>5.1.0</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

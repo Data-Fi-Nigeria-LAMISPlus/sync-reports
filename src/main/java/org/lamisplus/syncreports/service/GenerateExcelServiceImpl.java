@@ -1,9 +1,9 @@
-package org.lamisplus.syncdashboard.service;
+package org.lamisplus.syncreports.service;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.lamisplus.syncdashboard.domain.entity.Radet;
-import org.lamisplus.syncdashboard.domain.entity.FlatFileRequest;
+import org.lamisplus.syncreports.domain.entity.Radet;
+import org.lamisplus.syncreports.domain.entity.FlatFileRequest;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;

@@ -1,17 +1,17 @@
-package org.lamisplus.syncdashboard.service;
+package org.lamisplus.syncreports.service;
 
 //import liquibase.util.csv.CSVWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-        import org.lamisplus.syncdashboard.domain.entity.AggregateData;
-import org.lamisplus.syncdashboard.domain.entity.Radet;
-import org.lamisplus.syncdashboard.domain.entity.FlatFileRequest;
-import org.lamisplus.syncdashboard.domain.entity.RadetTracker;
-import org.lamisplus.syncdashboard.repository.AggregateDataRepository;
-import org.lamisplus.syncdashboard.repository.RadetRepository;
-import org.lamisplus.syncdashboard.repository.RadetTrackerRepository;
+        import org.lamisplus.syncreports.domain.entity.AggregateData;
+import org.lamisplus.syncreports.domain.entity.Radet;
+import org.lamisplus.syncreports.domain.entity.FlatFileRequest;
+import org.lamisplus.syncreports.domain.entity.RadetTracker;
+import org.lamisplus.syncreports.repository.AggregateDataRepository;
+import org.lamisplus.syncreports.repository.RadetRepository;
+import org.lamisplus.syncreports.repository.RadetTrackerRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

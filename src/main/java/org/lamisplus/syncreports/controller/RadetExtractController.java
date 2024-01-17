@@ -1,10 +1,10 @@
-package org.lamisplus.syncdashboard.controller;
+package org.lamisplus.syncreports.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.lamisplus.syncdashboard.domain.entity.FlatFileRequest;
-import org.lamisplus.syncdashboard.domain.entity.RadetTracker;
-import org.lamisplus.syncdashboard.service.GenerateExcelService;
-import org.lamisplus.syncdashboard.service.RadetExtractService;
+import org.lamisplus.syncreports.domain.entity.FlatFileRequest;
+import org.lamisplus.syncreports.domain.entity.RadetTracker;
+import org.lamisplus.syncreports.service.GenerateExcelService;
+import org.lamisplus.syncreports.service.RadetExtractService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +32,7 @@ public class RadetExtractController {
         flatFileRequest.setFy(2023L);
         flatFileRequest.setFacilityIds(facilityIds);
         flatFileRequest.setQuater("Q1");
+        flatFileRequest.setIPName("Test IP");
         saveRadetFile(flatFileRequest);
     }
 
@@ -70,7 +71,9 @@ public class RadetExtractController {
         } catch(IOException ioe) {
             ioe.printStackTrace();
         } finally {
-            fos.close();
+            if(fos != null) {
+                fos.close();
+            }
         }
 
         try {
