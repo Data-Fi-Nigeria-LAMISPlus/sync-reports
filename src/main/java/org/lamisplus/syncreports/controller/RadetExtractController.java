@@ -25,15 +25,14 @@ public class RadetExtractController {
 
     @Async
     @PostMapping(BASE_URL+"/extract")
-    public void getRadetExtracts(@Valid @RequestBody List<String> facilityIds,
-                                 @RequestParam(required = false, defaultValue = "false") boolean all) throws IOException {
+    public RadetTracker getRadetExtracts(@Valid @RequestBody List<String> facilityIds,
+                                 @RequestParam String ipName) throws IOException {
         FlatFileRequest flatFileRequest = new FlatFileRequest();
-        flatFileRequest.setAll(all);
         flatFileRequest.setFy(2023L);
         flatFileRequest.setFacilityIds(facilityIds);
-        flatFileRequest.setQuater("Q1");
-        flatFileRequest.setIPName("Test IP");
-        saveRadetFile(flatFileRequest);
+        flatFileRequest.setQuarter("Q1");
+        flatFileRequest.setIPName(ipName);
+        return saveRadetFile(flatFileRequest);
     }
 
     @GetMapping(BASE_URL+"/tracker")
@@ -55,7 +54,7 @@ public class RadetExtractController {
     }
 
     @Async
-    public void saveRadetFile(FlatFileRequest flatFileRequest) throws IOException {
+    public RadetTracker saveRadetFile(FlatFileRequest flatFileRequest) throws IOException {
         FileOutputStream fos = null;
         File file = null;
         try {
@@ -81,13 +80,15 @@ public class RadetExtractController {
             fileTracker.setCreatedDate(radetExtractService.dateAnother);
             fileTracker.setFiscalYear(flatFileRequest.getFy());
             fileTracker.setIpCode(flatFileRequest.getFacilityIds().get(0));
-            fileTracker.setReportingQuarter(flatFileRequest.getQuater());
+            fileTracker.setReportingQuarter(flatFileRequest.getQuarter());
             fileTracker.setIpName(radetExtractService.ipName +"_("+ file.length()/1000000.00D + "MB)");
             fileTracker.setLinks(radetExtractService.zipFileName.replace(".xlx", ""));
             fileTracker.setStatus("Complete");
-            radetExtractService.creatTrackers(fileTracker);
+            return radetExtractService.creatTrackers(fileTracker);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        //TODO: handle the return
+        return null;
     }
 }

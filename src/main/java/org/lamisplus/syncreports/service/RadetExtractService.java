@@ -58,8 +58,8 @@ public class RadetExtractService {
         return null;//convertToCsv(radetExtractList, file.getPath(), datimIds.get(0), all);
     }
 
-    public void creatTrackers(RadetTracker fileTracker) {
-        radetTrackerRepository.save(fileTracker);
+    public RadetTracker creatTrackers(RadetTracker fileTracker) {
+        return radetTrackerRepository.save(fileTracker);
     }
 
     public List<RadetTracker> getRadetExtractTrackers(){
@@ -152,7 +152,7 @@ public class RadetExtractService {
         Date date1 = new Date();
         final String FILE_NAME_DATE = DATE_FORMAT.format(date1);
         dateAnother = DATE_FORMAT_ANOTHER.format(date1);
-        String period = flatFileRequest.getFy() + flatFileRequest.getQuater();
+        String period = flatFileRequest.getFy() + flatFileRequest.getQuarter();
         List<String> DatimIds = flatFileRequest.getFacilityIds();
         dateName = FILE_NAME_DATE;
 
