@@ -1,9 +1,9 @@
 spring:
     datasource:
         driver-class-name: org.postgresql.Driver
-        username: postgres
-        password: emeka
-        url: jdbc:postgresql://localhost:5432/sync-file-server
+        username: lamisplus_etl
+        password: zleMUuPjLN36cYs
+        url: jdbc:postgresql://localhost:5432/lamisplus_ods_dwh
         hibernate:
             ddl-auto: none
             event.merge.entry_copy_observer: allow
@@ -23,4 +23,4 @@ spring:
         properties:
             hibernate.enable_lazy_load_no_trans: true
 server:
-    port: 8282
+    port: 7355

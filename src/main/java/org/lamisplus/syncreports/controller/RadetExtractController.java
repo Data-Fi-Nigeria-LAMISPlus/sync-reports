@@ -23,7 +23,7 @@ public class RadetExtractController {
     private final GenerateExcelService generateExcelService;
     private final String BASE_URL = "/api/v1/radet";
 
-    @Async
+    //@Async
     @PostMapping(BASE_URL+"/extract")
     public RadetTracker getRadetExtracts(@Valid @RequestBody List<String> facilityIds,
                                  @RequestParam String ipName) throws IOException {
@@ -41,16 +41,18 @@ public class RadetExtractController {
     }
 
     @GetMapping(BASE_URL+"/download")
-    public void downloadFile(@RequestParam("url") String url, HttpServletResponse response) throws IOException
+    public byte[] downloadFile(@RequestParam("url") String url) throws IOException
     {
         ByteArrayOutputStream baos = radetExtractService.downloadFile (url);
-        response.setHeader ("Content-Type", "application/octet-stream");
+        /*response.setHeader ("Content-Type", "application/octet-stream");
         response.setHeader ("Content-Disposition", "attachment;filename=" + url);
         response.setHeader ("Content-Length", Integer.toString (baos.size ()));
-        OutputStream outputStream = response.getOutputStream ();
-        outputStream.write (baos.toByteArray ());
+        OutputStream outputStream = response.getOutputStream ();*/
+        /*outputStream.write (baos.toByteArray ());
         outputStream.close ();
-        response.flushBuffer ();
+        response.flushBuffer ();*/
+
+        return baos.toByteArray ();
     }
 
     @Async
