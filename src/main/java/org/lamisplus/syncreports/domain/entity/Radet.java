@@ -276,4 +276,19 @@ public class Radet {
 
     @Column(name = "period")
     private String period;
+
+    @Column(name = "dateofcurrentartstatus")
+    private LocalDate dateOfCurrentARTStatus;
+
+    @Column(name = "dateoftbdiagnosticresultreceived")
+    private LocalDate dateOfTBDiagnosticResultReceived;
+
+    @Column(name = "dateofstartofcurrentartregimen")
+    private LocalDate dateOfStartOfCurrentARTRegimen;
+
+    @Column(name = "currentweight")
+    private Double currentWeight;
+
+    @Column(name = "pregnancystatus")
+    private String pregnancyStatus;
 }
