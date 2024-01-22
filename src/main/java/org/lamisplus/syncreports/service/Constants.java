@@ -206,9 +206,10 @@ public class Constants {
                     "Viral Load Eligibility Status",
                     "Date of Viral Load Eligibility Status",
 
-                    //current status
+                    //current status & Client Verification
                     "Current ART Status",
                     "Date of Current ART Status",
+                    "Client Verification Status",
                     "Cause of Death",
                     "VA Cause of Death",
 
