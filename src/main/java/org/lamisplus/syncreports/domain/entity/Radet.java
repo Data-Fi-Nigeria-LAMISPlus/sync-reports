@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -276,4 +277,19 @@ public class Radet {
 
     @Column(name = "period")
     private String period;
+
+    @Column(name = "dateofcurrentartstatus")
+    private LocalDate dateOfCurrentARTStatus;
+
+    @Column(name = "dateoftbdiagnosticresultreceived")
+    private LocalDateTime dateOfTBDiagnosticResultReceived;
+
+    @Column(name = "dateofstartofcurrentartregimen")
+    private LocalDate dateOfStartOfCurrentARTRegimen;
+
+    @Column(name = "currentweight")
+    private String currentWeight;
+
+    @Column(name = "pregnancystatus")
+    private String pregnancyStatus;
 }
