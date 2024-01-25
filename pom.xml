@@ -10,7 +10,7 @@
     </parent>
     <groupId>org.lamisplus</groupId>
     <artifactId>sync-reports</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.9</version>
     <name>sync-reports</name>
     <description>sync-reports</description>
     <properties>

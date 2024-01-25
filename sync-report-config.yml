@@ -24,3 +24,8 @@ spring:
             hibernate.enable_lazy_load_no_trans: true
 server:
     port: 8585
+lamisplus:
+    report:
+        radet: d81f58f6-8361-45cc-9564-b2e9a5d17eea
+        prep: 45f01feb-227b-4740-9e0a-882fea830ec0
+        hts: bed8af69-4eef-4420-9591-7b783bac2792

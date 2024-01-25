@@ -3,6 +3,10 @@ package org.lamisplus.syncreports.service;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.lamisplus.syncreports.domain.entity.FlatFile;
+import org.lamisplus.syncreports.domain.entity.Hts;
+import org.lamisplus.syncreports.domain.entity.Prep;
 import org.lamisplus.syncreports.domain.entity.Radet;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +35,11 @@ public class GenerateExcelDataHelper {
                 Double repeatVl = null;
                 String tbStatusOutCome = null;
                 int index = 0;
+                if(radetReportDto.getCurrentStatus() != null &&
+                        (StringUtils.containsIgnoreCase("Stopped", radetReportDto.getCurrentStatus()))){
+                    radetReportDto.setCurrentStatus("Stopped Treatment");
+
+                }
 
                 //sn
                 map.put(index++, sn);
@@ -86,8 +95,14 @@ public class GenerateExcelDataHelper {
                 map.put(index++, radetReportDto.getDateOfVlEligibilityStatus());
 
                 //current status
+                if(radetReportDto.getCurrentStatus() != null &&
+                        (StringUtils.containsIgnoreCase("Stopped", radetReportDto.getCurrentStatus()))){
+                    radetReportDto.setCurrentStatus("Stopped Treatment");
+
+                }
                 map.put(index++, radetReportDto.getCurrentStatus());
                 map.put(index++, radetReportDto.getDateOfCurrentARTStatus());
+                map.put(index++, radetReportDto.getClientVerificationStatus());
                 map.put(index++, radetReportDto.getCauseOfDeath());
                 map.put(index++, radetReportDto.getVaCauseOfDeath());
 
@@ -175,7 +190,189 @@ public class GenerateExcelDataHelper {
         return result;
     }
 
+    public  List<Map<Integer, Object>> fillPrepDataMapper(@NonNull List<Prep> preps) {
+        List<Map<Integer, Object>> result = new ArrayList<>();
+        int sn = 1;
+        log.info("converting PrEP db records to excel ....");
+        try {
+            for (Prep prep : preps) {
+                if (prep != null) {
+                    Map<Integer, Object> map = new HashMap<>();
+                    int index = 0;
+
+                    map.put(index++, String.valueOf(sn));
+                    map.put(index++, String.valueOf(String.valueOf(prep.getDatimId())));
+                    map.put(index++, String.valueOf(String.valueOf(prep.getState())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getLga())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getFacilityName())));
+                    map.put(index++, String.valueOf(String.valueOf(prep.getPersonUuid())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getHospitalNumber())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getFirstName())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getSurname())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getOtherName())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getSex())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getTargetGroup())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getAge())));
+                    map.put(index++,prep.getDateOfBirth());
+                    map.put(index++,getStringValue(String.valueOf(prep.getPhone())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getMaritalStatus())));
+                    map.put(index++, getStringValue(prep.getAddress() != null?prep.getAddress().replace("\"", ""):""));
+                    map.put(index++, getStringValue(String.valueOf(prep.getResidentialLga())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getResidentialState())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getEducation())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getOccupation())));
+                    map.put(index++, prep.getDateOfRegistration());
+                    map.put(index++, prep.getPrepCommencementDate());
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineRegimen())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineSystolicBp())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineDiastolicBp())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineWeight())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineHeight())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineCreatinine())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineHepatitisB())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineHepatitisC())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getHivStatusAtPrepInitiation())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getBaselineUrinalysis())));
+                    map.put(index++, prep.getBaselineUrinalysisDate());
+                    map.put(index++, getStringValue(String.valueOf(prep.getIndicationForPrep())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentRegimen())));
+                    map.put(index++, prep.getDateOfLastPickup());
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentStatus())));
+                    map.put(index++, prep.getDateOfCurrentStatus());
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentSystolicBp())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentDiastolicBp())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentWeight())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentHeight())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentHivStatus())));
+                    map.put(index++, prep.getDateOfCurrentHivStatus());
+                    map.put(index++, getStringValue(String.valueOf(prep.getCurrentUrinalysis())));
+                    map.put(index++, prep.getCurrentUrinalysisDate());
+                    map.put(index++, getStringValue(String.valueOf(prep.getPregnancyStatus())));
+                    map.put(index++, getStringValue(String.valueOf(prep.getInterruptionReason())));
+                    map.put(index++, prep.getInterruptionDate());
+                    map.put(index, prep.getHivEnrollmentDate());
+
+                    result.add(map);
+                    sn++;
+                }
+            }
+            log.info("Done converting db records total size {}", result.size());
+            return result;
+        }catch (Exception e) {
+            log.error("An error occurred when converting db records to excel");
+            log.error("The error message is: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static List<Map<Integer, Object>> fillFlatFileMapperDataMapper(@NonNull List<FlatFile> listFinalResult) {
+        List<Map<Integer, Object>> result = new ArrayList<>();
+        for (FlatFile flatFile : listFinalResult) {
+            if (flatFile != null) {
+                Map<Integer, Object> map = new HashMap<>();
+                int index = 0;
+                map.put(index++, flatFile.getDatimId());
+                map.put(index++, flatFile.getPeriod());
+                map.put(index++, flatFile.getDataElement());
+                map.put(index++, flatFile.getDataElementName());
+                map.put(index++, flatFile.getCategoryOptionCombo());
+                map.put(index++, flatFile.getCategoryOptionComboName());
+                map.put(index++, flatFile.getAttributeOptionCombo());
+                map.put(index++, flatFile.getValue());
+                map.put(index++, flatFile.getFacilityName());
+                map.put(index++, flatFile.getFacilityState());
+                map.put(index++, flatFile.getFacilityLga());
+                map.put(index++, flatFile.getIpName());
+                result.add(map);
+            }
+        }
+        log.info("result: " + result.size()); // going to be one
+        return result;
+    }
+
     private static String getStringValue(String value) {
         return value.replace("null", "");
     }
+
+    public  List<Map<Integer, Object>> fillHtsDataMapper(@NonNull List<Hts> htsList) {
+        List<Map<Integer, Object>> result = new ArrayList<>();
+        int sn = 1;
+        log.info("converting HTS db records to excel ....");
+        try {
+            for (Hts hts : htsList) {
+                if (hts != null) {
+                    Map<Integer, Object> map = new HashMap<>();
+                    int index = 0;
+
+                    map.put(index++, String.valueOf(sn));
+                    map.put(index++, getStringValue(String.valueOf(hts.getDatimCode())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getFacility())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getClientCode())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getFirstName())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getSurname())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getOtherName())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getSex())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getTargetGroup())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getAge())));
+                    map.put(index++, hts.getDateOfBirth());
+                    map.put(index++, getStringValue(String.valueOf(hts.getPhoneNumber())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getMaritalStatus())));
+                    map.put(index++, hts.getClientAddress() != null ? getStringValue(String.valueOf(hts.getClientAddress())).replace("\"", ""):"");
+                    map.put(index++, getStringValue(String.valueOf(hts.getLgaOfResidence())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getStateOfResidence())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getEducation())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getOccupation())));
+                    map.put(index++, hts.getDateVisit());
+                    map.put(index++, getStringValue(String.valueOf(hts.getFirstTimeVisit())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getNumberOfWives())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getNumberOfChildren())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getIndexClient())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getPreviouslyTested())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getReferredFrom())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getTestingSetting())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getCounselingType())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getPregnacyStatus())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getBreastFeeding())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getIndexType())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getIfrecencyTestingOptIn())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getRecencyId())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getRecencyTestType())));
+                    map.put(index++, hts.getRecencyTestDate());
+                    map.put(index++, getStringValue(String.valueOf(hts.getRecencyInterpretation())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getFinalRecencyResult())));
+                    map.put(index++, hts.getViralLoadSampleCollectionDate());
+                    map.put(index++, getStringValue(String.valueOf(hts.getViralLoadConfirmationResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getViralLoadResult())));
+                    map.put(index++, hts.getViralLoadConfirmationDate());
+                    map.put(index++, getStringValue(String.valueOf(hts.getAssessmentCode())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getModality())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getSyphilisTestResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getHepatitisBTestResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getHepatitisCTestResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getCd4Type())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getCd4TestResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getHivTestResult())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getFinalHivTestResult())));
+                    map.put(index++, hts.getDateOfHivTesting());
+                    map.put(index++, getStringValue(String.valueOf(hts.getPrepOffered())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getPrepAccepted())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getNumberOfCondomsGiven())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getNumberOfLubricantsGiven())));
+                    map.put(index++, getStringValue(String.valueOf(hts.getHtsLatitude())));
+                    map.put(index, getStringValue(String.valueOf(hts.getHtsLongitude())));
+                    result.add(map);
+                    sn++;
+                }
+            }
+            log.info("Done converting db records total size {}", result.size());
+            return result;
+        }catch (Exception e) {
+            log.error("An error occurred when converting db records to excel");
+            log.error("The error message is: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }

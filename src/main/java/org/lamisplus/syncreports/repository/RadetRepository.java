@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface RadetRepository extends JpaRepository<Radet, Long> {
-    List<Radet> findAllByDatimidIn(Collection<String> datimid);
+    List<Radet> findAllByDatimIdIn(Collection<String> datimid);
 
-    List<Radet> findAllByDatimidInAndPeriod(Collection<String> datimid, String period);
+    List<Radet> findAllByDatimIdInAndPeriod(List<String> datimid, String period);
 }

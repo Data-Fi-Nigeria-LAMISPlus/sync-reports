@@ -11,9 +11,6 @@ import java.time.LocalDateTime;
 @Table(name = "final_radet")
 public class Radet {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "uniquepersonuuid")
     private String uniquePersonUuid;
 
@@ -44,8 +41,8 @@ public class Radet {
     @Column(name = "state")
     private String state;
 
-    @Column(name = "datimid")
-    private String datimid;
+    /*@Column(name = "datimid")
+    private String datimid;*/
 
     @Column(name = "targetgroup")
     private String targetGroup;
