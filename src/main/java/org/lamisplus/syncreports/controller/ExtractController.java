@@ -23,7 +23,7 @@ public class ExtractController {
                                     @Valid @RequestBody List<String> facilityIds,
                                     @RequestParam String ipName) throws IOException {
         FlatFileRequest flatFileRequest = new FlatFileRequest();
-        flatFileRequest.setFy(2023L);
+        flatFileRequest.setFy(2024L);
         flatFileRequest.setFacilityIds(facilityIds);
         flatFileRequest.setQuarter("Q1");
         flatFileRequest.setIPName(ipName);

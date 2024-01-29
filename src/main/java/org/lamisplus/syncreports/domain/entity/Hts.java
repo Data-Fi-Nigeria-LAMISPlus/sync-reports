@@ -13,10 +13,6 @@ import java.time.LocalDateTime;
 @Table(name = "final_htsquery_datamart", schema = "hts_prep_datamart")
 public class Hts {
     @Id
-    @Column(name = "id", updatable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "clientcode")
     private String clientCode;
 
@@ -137,7 +133,7 @@ public class Hts {
     @Column(name = "recencytestdate")
     private LocalDate recencyTestDate;
 
-    @Column(name = "recencyIntegererpretation")
+    @Column(name = "recencyinterpretation")
     private String recencyInterpretation;
 
     @Column(name = "finalrecencyresult")
@@ -155,8 +151,8 @@ public class Hts {
     @Column(name = "viralloadconfirmationdate")
     private LocalDate viralLoadConfirmationDate;
 
-    @Column(name = "assessmentcode")
-    private String assessmentCode;
+    /*@Column(name = "assessmentcode")
+    private String assessmentCode;*/
 
     @Column(name = "modality")
     private String modality;
@@ -194,8 +190,8 @@ public class Hts {
     /*@Column(name = "htsuniqueno")
     private String htsUniqueNo;*/
 
-    @Column(name = "period")
-    private String period;
+    /*@Column(name = "period")
+    private String period;*/
 
     /*@Column(name = "submissiontime")
     private LocalDateTime submissionTime;

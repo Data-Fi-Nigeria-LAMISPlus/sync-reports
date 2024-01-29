@@ -78,7 +78,7 @@ public class Constants {
                     "Viral Load Result Classification",
                     "Viral Load Confirmation Result",
                     "Viral Load Confirmation Date (yyyy-mm-dd)",
-                    "Assessment Code",
+                    //"Assessment Code",
                     "Modality",
                     "Syphilis Test Result",
                     "Hepatitis B Result",
